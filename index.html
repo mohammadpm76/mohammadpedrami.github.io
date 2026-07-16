@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammad Pedrami — Compensation &amp; HR Analytics Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#eef0ea;
+    --paper-alt:#e4e7dd;
+    --ink:#1b1f1d;
+    --ink-soft:#4b524c;
+    --teal:#2f5d5a;
+    --teal-deep:#203f3d;
+    --ochre:#b98d4c;
+    --line:#c9c6ba;
+    --card:#f6f7f2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  a{color:inherit;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal-deep);
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+  }
+  .eyebrow::before{
+    content:"";
+    display:inline-block;
+    width:22px;
+    height:1px;
+    background:var(--ochre);
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .layout{
+    display:grid;
+    grid-template-columns:230px 1fr;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  /* ---- FILE INDEX / SIDE NAV ---- */
+  nav.index{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    padding:2.4rem 1.2rem 2rem 2rem;
+    border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+  }
+  nav.index .file-id{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    color:var(--ink-soft);
+    letter-spacing:0.08em;
+    margin-bottom:2.4rem;
+  }
+  nav.index ol{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:0.15rem;
+    flex:1;
+  }
+  nav.index li a{
+    text-decoration:none;
+    display:flex;
+    gap:0.7rem;
+    align-items:baseline;
+    padding:0.5rem 0.4rem;
+    border-radius:2px;
+    font-size:0.86rem;
+    color:var(--ink-soft);
+    transition:color 0.15s ease, background 0.15s ease;
+  }
+  nav.index li a:hover, nav.index li a:focus-visible{
+    color:var(--ink);
+    background:var(--paper-alt);
+    outline:2px solid transparent;
+  }
+  nav.index li a:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:1px;
+  }
+  nav.index li a .tab-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ochre);
+    min-width:1.3rem;
+  }
+  nav.index .stamp-mini{
+    margin-top:auto;
+    padding-top:1.5rem;
+  }
+
+  main{min-width:0;}
+  section{
+    padding:4.4rem 3.2rem;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  /* ---- HERO ---- */
+  .hero{
+    padding-top:5rem;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:2.5rem;
+    align-items:start;
+  }
+  .hero h1{
+    font-size:clamp(2.3rem, 4vw, 3.4rem);
+    line-height:1.05;
+    margin:0.6rem 0 1rem;
+  }
+  .hero .role{
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+    margin-bottom:1.6rem;
+  }
+  .hero .lede{
+    max-width:56ch;
+    color:var(--ink-soft);
+  }
+  .hero-actions{
+    margin-top:1.8rem;
+    display:flex;
+    gap:0.8rem;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.05em;
+    text-decoration:none;
+    padding:0.75rem 1.1rem;
+    border:1px solid var(--ink);
+    color:var(--ink);
+    display:inline-block;
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .btn:hover{background:var(--ink); color:var(--paper);}
+  .btn.primary{background:var(--teal); border-color:var(--teal); color:#fff;}
+  .btn.primary:hover{background:var(--teal-deep); border-color:var(--teal-deep);}
+
+  /* ---- STAMP SIGNATURE ELEMENT ---- */
+  .stamp{
+    width:132px;
+    height:132px;
+    flex-shrink:0;
+    transform:rotate(-9deg);
+    color:var(--teal);
+  }
+  .stamp circle.ring{fill:none; stroke:currentColor; stroke-width:1.6;}
+  .stamp .core{fill:none; stroke:currentColor; stroke-width:1;}
+  .stamp text{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:8.6px;
+    letter-spacing:2.5px;
+    fill:currentColor;
+  }
+  .stamp .center-mark{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px;
+    fill:currentColor;
+    text-anchor:middle;
+  }
+  .stamp-mini svg{width:74px; height:74px; color:var(--teal); transform:rotate(-9deg);}
+  .stamp-mini text{font-family:'IBM Plex Mono', monospace; font-size:8.6px; letter-spacing:1.8px; fill:currentColor;}
+
+  /* ---- TAGS / KEYWORDS ---- */
+  .tag-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.55rem;
+    margin-top:1.6rem;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem;
+    padding:0.4rem 0.7rem;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    background:var(--card);
+  }
+
+  /* ---- TIMELINE (Experience) ---- */
+  .timeline{margin-top:1.8rem; border-left:1px solid var(--line); padding-left:0;}
+  .entry{
+    position:relative;
+    padding:0 0 2.4rem 2rem;
+    border-left:1px solid var(--line);
+    margin-left:0.1rem;
+  }
+  .entry:last-child{padding-bottom:0;}
+  .entry::before{
+    content:"";
+    position:absolute;
+    left:-5px;
+    top:0.35rem;
+    width:9px; height:9px;
+    background:var(--ochre);
+    border-radius:50%;
+  }
+  .entry .period{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem;
+    color:var(--teal-deep);
+    letter-spacing:0.04em;
+  }
+  .entry h3{font-size:1.3rem; margin:0.25rem 0 0.1rem;}
+  .entry .org{color:var(--ink-soft); font-size:0.94rem; margin-bottom:0.7rem;}
+  .entry ul{padding-left:1.1rem; color:var(--ink-soft); font-size:0.95rem;}
+  .entry li{margin-bottom:0.3rem;}
+
+  /* ---- PUBLICATIONS LEDGER ---- */
+  .ledger{margin-top:1.8rem;}
+  .pub-row{
+    display:grid;
+    grid-template-columns:2.2rem 1fr auto;
+    gap:1.2rem;
+    padding:1.3rem 0;
+    border-top:1px solid var(--line);
+    align-items:baseline;
+  }
+  .ledger .pub-row:last-child{border-bottom:1px solid var(--line);}
+  .pub-row .idx{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--ochre);
+    font-size:0.85rem;
+  }
+  .pub-row h3{font-size:1.05rem; font-weight:500; margin-bottom:0.25rem;}
+  .pub-row .venue{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    letter-spacing:0.03em;
+    white-space:nowrap;
+  }
+  .pub-row p.note{
+    grid-column:2 / span 2;
+    color:var(--ink-soft);
+    font-size:0.9rem;
+    margin-top:0.5rem;
+  }
+
+  /* ---- SKILLS / CERTS GRID ---- */
+  .col-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:2.2rem;
+    margin-top:1.8rem;
+  }
+  .col-grid .group .eyebrow{margin-bottom:0.8rem;}
+  .col-grid ul{list-style:none; font-size:0.92rem; color:var(--ink-soft);}
+  .col-grid li{
+    padding:0.45rem 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .col-grid li:last-child{border-bottom:none;}
+
+  .cert-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:1.1rem 1.2rem;
+    margin-bottom:0.7rem;
+  }
+  .cert-card .cert-title{font-size:0.95rem; font-weight:500;}
+  .cert-card .cert-src{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    margin-top:0.2rem;
+  }
+
+  footer{
+    padding:3.6rem 3.2rem 3rem;
+    background:var(--ink);
+    color:var(--paper);
+  }
+  footer h2{color:var(--paper);}
+  footer .contact-grid{
+    display:flex;
+    gap:2.5rem;
+    flex-wrap:wrap;
+    margin-top:1.6rem;
+  }
+  footer a.contact-link{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    text-decoration:none;
+    border-bottom:1px solid rgba(238,240,234,0.35);
+    padding-bottom:0.15rem;
+  }
+  footer a.contact-link:hover{border-color:var(--ochre); color:var(--ochre);}
+  footer .fine{
+    margin-top:2.6rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    color:rgba(238,240,234,0.5);
+  }
+
+  /* ---- MOBILE ---- */
+  @media (max-width: 880px){
+    .layout{grid-template-columns:1fr;}
+    nav.index{
+      position:sticky;
+      top:0;
+      height:auto;
+      z-index:10;
+      background:var(--paper);
+      border-right:none;
+      border-bottom:1px solid var(--line);
+      padding:0.9rem 1rem;
+    }
+    nav.index .file-id, nav.index .stamp-mini{display:none;}
+    nav.index ol{
+      flex-direction:row;
+      overflow-x:auto;
+      gap:0.2rem;
+    }
+    nav.index li a{white-space:nowrap; padding:0.4rem 0.6rem;}
+    section{padding:3rem 1.3rem;}
+    .hero{grid-template-columns:1fr; padding-top:2.5rem;}
+    .stamp{order:-1; margin-bottom:0.5rem;}
+    .pub-row{grid-template-columns:1.6rem 1fr; row-gap:0.3rem;}
+    .pub-row .venue{grid-column:1 / span 2;}
+    .pub-row p.note{grid-column:1 / span 2;}
+    footer{padding:2.6rem 1.3rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <nav class="index" aria-label="Section index">
+    <div class="file-id">FILE&nbsp;NO. HR—2026&nbsp;/&nbsp;PEDRAMI, M.</div>
+    <ol>
+      <li><a href="#profile"><span class="tab-num">01</span>Profile</a></li>
+      <li><a href="#interests"><span class="tab-num">02</span>Research Interests</a></li>
+      <li><a href="#experience"><span class="tab-num">03</span>Experience</a></li>
+      <li><a href="#education"><span class="tab-num">04</span>Education</a></li>
+      <li><a href="#publications"><span class="tab-num">05</span>Publications</a></li>
+      <li><a href="#skills"><span class="tab-num">06</span>Skills</a></li>
+      <li><a href="#certifications"><span class="tab-num">07</span>Certifications</a></li>
+      <li><a href="#contact"><span class="tab-num">08</span>Contact</a></li>
+    </ol>
+    <div class="stamp-mini" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="0.8"/>
+        <path id="miniCirclePath" d="M 50,12 A 38,38 0 1 1 49.9,12" fill="none"/>
+        <text><textPath href="#miniCirclePath" startOffset="2">HUMAN RESOURCES · RESEARCH RECORD ·</textPath></text>
+      </svg>
+    </div>
+  </nav>
+
+  <main>
+
+    <section id="profile" class="hero">
+      <div>
+        <p class="eyebrow">Compensation &amp; Benefits · HR Analytics · HR Tech Research</p>
+        <h1>Mohammad Pedrami</h1>
+        <p class="role">Human Resource Management researcher and practitioner working across Compensation &amp; Benefits, HR Analytics, and the study of Artificial Intelligence in the workplace.</p>
+        <p class="lede">His research examines AI adoption in Human Resource Management, Human–AI Teaming, behavioral nudges, and the ethical implications of workplace AI, built through meta-synthesis and systematic review methodology. The aim throughout: connect academic research with day-to-day HR practice, using evidence and data to support better organizational decisions.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="mailto:mohammad.pedrami@gmail.com">Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/mohammadpedrami-pm76" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <svg class="stamp" viewBox="0 0 100 100" aria-hidden="true">
+        <circle class="ring" cx="50" cy="50" r="47"/>
+        <circle class="core" cx="50" cy="50" r="37"/>
+        <path id="stampCirclePath" d="M 50,13 A 37,37 0 1 1 49.9,13" fill="none"/>
+        <text><textPath href="#stampCirclePath" startOffset="0">VERIFIED RECORD · TEHRAN, IRAN ·</textPath></text>
+        <text class="center-mark" x="50" y="47">MPA</text>
+        <text class="center-mark" x="50" y="58">2024</text>
+      </svg>
+    </section>
+
+    <section id="interests">
+      <p class="eyebrow">02 — Research Interests</p>
+      <h2 style="margin-top:0.6rem; font-size:1.7rem;">What the work is built on</h2>
+      <div class="tag-grid">
+        <span class="tag">Human Resource Management</span>
+        <span class="tag">Human–AI Teaming</span>
+        <span class="tag">AI Adoption in HRM</span>
+        <span class="tag">HR Analytics</span>
+        <span class="tag">Behavioral Nudges</span>
+        <span class="tag">HR Technologies</span>
+        <span class="tag">Meta-Synthesis</span>
+        <span class="tag">Systematic Reviews</span>
+        <span class="tag">People Analytics</span>
+        <span class="tag">Organizational Behavior</span>
+        <span class="tag">AI Ethics</span>
+        <span class="tag">Evidence-Based HRM</span>
+        <span class="tag">Quantitative Methods</span>
+        <span class="tag">Organizational Performance</span>
+      </div>
+    </section>
+
+    <section id="experience">
+      <p class="eyebrow">03 — Professional Experience</p>
+      <div class="timeline">
+        <div class="entry">
+          <p class="period">Feb 2023 — Present</p>
+          <h3>Compensation Specialist</h3>
+          <p class="org">Hamrahe Aval (MCI)</p>
+          <ul>
+            <li>Compensation and benefits administration</li>
+            <li>Payroll management and salary benchmarking</li>
+            <li>HR data analytics and reporting</li>
+            <li>Supporting strategic HR decision-making</li>
+          </ul>
+        </div>
+        <div class="entry">
+          <p class="period">Feb 2021 — Present</p>
+          <h3>Educational Consultant</h3>
+          <p class="org">3gaam</p>
+          <ul>
+            <li>Educational consulting services</li>
+            <li>Academic and organizational development initiatives</li>
+            <li>Support for research-oriented projects</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <p class="eyebrow">04 — Education</p>
+      <div class="timeline" style="margin-top:1.8rem;">
+        <div class="entry">
+          <p class="period">2022 — 2024</p>
+          <h3>Master of Public Administration (MPA)</h3>
+          <p class="org">University of Tehran — Human Resources Management / Personnel Administration</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <p class="eyebrow">05 — Selected Publications</p>
+      <div class="ledger">
+        <div class="pub-row">
+          <span class="idx">01</span>
+          <div>
+            <h3>Determinants of Effective Human–AI Teaming in Work Contexts: A Meta-Synthesis</h3>
+          </div>
+          <span class="venue">Int'l J. Human–Computer Interaction, 2025</span>
+        </div>
+        <div class="pub-row">
+          <span class="idx">02</span>
+          <div>
+            <h3>A Meta-Synthesis Informing an Integrated Framework for Nudges in Student Academic Performance</h3>
+          </div>
+          <span class="venue">Discover Education, 2025</span>
+        </div>
+        <div class="pub-row">
+          <span class="idx">03</span>
+          <div>
+            <h3>Factors Influencing Artificial Intelligence Adoption in Human Resource Management: A Meta-Synthesis and Systematic Review of Multidimensional Considerations</h3>
+          </div>
+          <span class="venue">J. Work-Applied Management, 2025</span>
+          <p class="note">Investigates the multidimensional factors influencing AI adoption in HRM and offers organizations actionable insight for successful implementation.</p>
+        </div>
+        <div class="pub-row">
+          <span class="idx">04</span>
+          <div>
+            <h3>Identification and Meta-Synthesis Analysis of Artificial Intelligence Ethical Challenges in Human Resource Management: A Conceptual Framework</h3>
+          </div>
+          <span class="venue">J. Human Resource Management, 2025</span>
+        </div>
+        <div class="pub-row">
+          <span class="idx">05</span>
+          <div>
+            <h3>Behavioral Nudges in Organizational Productivity Horizons: A Theoretical Analysis of Influential Factors</h3>
+          </div>
+          <span class="venue">Development of Humanities, 2025</span>
+        </div>
+        <div class="pub-row">
+          <span class="idx">06</span>
+          <div>
+            <h3>Understanding the Happiness-Making of Behavioral Nudges in Work Environments (Studied Case: Management Students)</h3>
+          </div>
+          <span class="venue">J. Human Resource Management, 2025</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <p class="eyebrow">06 — Technical Skills</p>
+      <div class="col-grid">
+        <div class="group">
+          <p class="eyebrow">Human Resource Management</p>
+          <ul>
+            <li>Compensation and Benefits</li>
+            <li>Human Resource Analytics</li>
+            <li>Performance Management</li>
+            <li>Recruiting and Onboarding</li>
+            <li>People Analytics</li>
+            <li>Strategic Human Resource Management</li>
+          </ul>
+        </div>
+        <div class="group">
+          <p class="eyebrow">Research Skills</p>
+          <ul>
+            <li>Meta-Synthesis</li>
+            <li>Systematic Review</li>
+            <li>Qualitative Research</li>
+            <li>Quantitative Research Methods</li>
+            <li>Scientific Writing</li>
+            <li>Peer Reviewing</li>
+          </ul>
+        </div>
+        <div class="group">
+          <p class="eyebrow">AI &amp; Data Science</p>
+          <ul>
+            <li>Artificial Intelligence</li>
+            <li>HR Technologies</li>
+            <li>Data Analytics</li>
+            <li>Python Programming</li>
+            <li>Statistics with SAS</li>
+            <li>Human–AI Collaboration</li>
+          </ul>
+        </div>
+        <div class="group">
+          <p class="eyebrow">Management</p>
+          <ul>
+            <li>Project Management</li>
+            <li>Leadership Development</li>
+            <li>Change Management</li>
+            <li>Strategic Thinking</li>
+            <li>Organizational Analysis</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <p class="eyebrow">07 — Certifications</p>
+      <div class="col-grid">
+        <div class="group">
+          <p class="eyebrow">Artificial Intelligence</p>
+          <div class="cert-card"><div class="cert-title">Introduction to AI</div><div class="cert-src">University of Helsinki</div></div>
+          <div class="cert-card"><div class="cert-title">AI Applications in People Management</div><div class="cert-src">University of Pennsylvania</div></div>
+          <div class="cert-card"><div class="cert-title">AI Fundamentals for Non-Data Scientists</div><div class="cert-src">University of Pennsylvania</div></div>
+        </div>
+        <div class="group">
+          <p class="eyebrow">Human Resource Management</p>
+          <div class="cert-card"><div class="cert-title">Human Resources Analytics</div><div class="cert-src">UC Irvine</div></div>
+          <div class="cert-card"><div class="cert-title">Managing Employee Compensation</div><div class="cert-src">University of Minnesota</div></div>
+          <div class="cert-card"><div class="cert-title">Managing Employee Performance</div><div class="cert-src">University of Minnesota</div></div>
+          <div class="cert-card"><div class="cert-title">Recruiting, Hiring &amp; Onboarding Employees</div><div class="cert-src">University of Minnesota</div></div>
+          <div class="cert-card"><div class="cert-title">Preparing to Manage Human Resources</div><div class="cert-src">University of Minnesota</div></div>
+          <div class="cert-card"><div class="cert-title">HR for People Managers (Capstone)</div><div class="cert-src">University of Minnesota</div></div>
+        </div>
+        <div class="group">
+          <p class="eyebrow">Data Analytics &amp; Statistics</p>
+          <div class="cert-card"><div class="cert-title">Introduction to Data Analytics</div><div class="cert-src">IBM</div></div>
+          <div class="cert-card"><div class="cert-title">Statistics with SAS</div><div class="cert-src">SAS</div></div>
+          <div class="cert-card"><div class="cert-title">Quantitative Methods</div><div class="cert-src">University of Amsterdam</div></div>
+          <div class="cert-card"><div class="cert-title">People Analytics</div><div class="cert-src">University of Pennsylvania</div></div>
+        </div>
+        <div class="group">
+          <p class="eyebrow">Programming &amp; Management</p>
+          <div class="cert-card"><div class="cert-title">Programming for Everybody (Python)</div><div class="cert-src">University of Michigan</div></div>
+          <div class="cert-card"><div class="cert-title">Foundations of Project Management</div><div class="cert-src">Google</div></div>
+          <div class="cert-card"><div class="cert-title">Inspiring and Motivating Individuals</div><div class="cert-src">University of Michigan</div></div>
+          <div class="cert-card"><div class="cert-title">Working Times and Teleworking</div><div class="cert-src">ILO</div></div>
+        </div>
+      </div>
+      <p style="margin-top:1.8rem; font-size:0.88rem; color:var(--ink-soft);">Certificate of Appreciation for Peer Review — Journal of Chinese Human Resources Management (2025)</p>
+    </section>
+
+    <footer id="contact">
+      <p class="eyebrow" style="color:var(--ochre);">08 — Contact</p>
+      <h2 style="font-size:1.9rem; margin-top:0.6rem;">Open to research collaboration, peer review, and HR advisory work.</h2>
+      <div class="contact-grid">
+        <a class="contact-link" href="mailto:mohammad.pedrami@gmail.com">mohammad.pedrami@gmail.com</a>
+        <a class="contact-link" href="https://www.linkedin.com/in/mohammadpedrami-pm76" target="_blank" rel="noopener">linkedin.com/in/mohammadpedrami-pm76</a>
+        <span class="contact-link" style="border-bottom:none;">Tehran, Iran</span>
+      </div>
+      <p class="fine">mohammadpedrami.github.io — last updated 2026</p>
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>
